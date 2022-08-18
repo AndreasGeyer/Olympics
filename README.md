@@ -15,3 +15,5 @@ The folder code will contain all SQL files to transform the data
 - Git commit –m „Commit Message“ = „Speichern“ der Änderungen
 - Git push = Lade die Änderungen auf den Server hoch
 - Git Status = Frage den Status von staged Dateien ab
+
+first entry Ene
