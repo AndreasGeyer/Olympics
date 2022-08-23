@@ -6,8 +6,7 @@ select
 
 	case
 		when edition = 'na' then null
-		when edition = ' % ' then cast(trim(both from edition) as varchar)
-		else edition
+		else trim(edition)
 	end as edition,
 	
 	edition_id,
@@ -19,14 +18,12 @@ select
 	
 	case
 		when country = 'na' then null
-		when country = ' % ' then cast(trim(both from country) as varchar)
-		else country
+		else trim(country)
 	end as country,
 	
 	case
 		when country_noc = 'na' then null
-		when country_noc = ' % ' then cast(trim(both from country_noc) as varchar)
-		else country_noc
+		else trim(country_noc)
 	end as country_noc,
 	
 	gold,

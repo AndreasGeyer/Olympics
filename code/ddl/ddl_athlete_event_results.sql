@@ -6,34 +6,29 @@ select
 
 	case
 		when edition = 'na' then null
-		when edition = ' % ' then cast(trim(both from edition) as varchar)
-		else edition
+		else cast(trim(both from edition) as varchar)
 	end as edition,
 	
 	case
 		when country_noc = 'na' then null
-		when country_noc = ' % ' then cast(trim(both from country_noc) as varchar)
-		else country_noc
+		else cast(trim(both from country_noc) as varchar)
 	end as country_noc,
 	
 	case
 		when sport = 'na' then null
-		when sport = ' % ' then cast(trim(both from sport) as varchar)
-		else sport
+		else cast(trim(both from sport) as varchar)
 	end as sport,
 	
 	case
 		when event = 'na' then null
-		when event = ' % ' then cast(trim(both from event) as varchar)
-		else event
+		else cast(trim(both from event) as varchar)
 	end as event,
 	
 	result_id,
 	
 	case
 		when athlete = 'na' then null
-		when athlete = ' % ' then cast(trim(both from athlete) as varchar)
-		else athlete
+		else cast(trim(both from athlete) as varchar)
 	end as athlete,
 	
 	athlete_id,
@@ -49,8 +44,7 @@ select
 	
 	case
 		when medal = 'na' then null
-		when medal = ' % ' then cast(trim(both from medal) as varchar)
-		else medal
+		else cast(trim(both from medal) as varchar)
 	end as medal,
 	
 	"isTeamSport"

@@ -12,8 +12,7 @@ select
 	
 	case
 		when edition_url = 'na' then null
-		when edition_url not like '/%' then cast(trim(both from edition_url) as varchar)
-		else edition_url
+		else trim(edition_url)
 	end as edition_url,
 	
 	case
@@ -23,8 +22,7 @@ select
 	
 	case
 		when city = 'na' then null
-		when city like ' %' or city like '% ' then cast(trim(both from city) as varchar)
-		else city
+		else trim(city)
 	end as city,
 	
 	case
@@ -35,8 +33,7 @@ select
 	
 	case
 		when country_noc = 'na' then null
-		when country_noc = ' % ' then cast(trim(both from country_noc) as varchar)
-		else country_noc
+		else trim(country_noc)
 	end as country_noc,
 	
 	case
