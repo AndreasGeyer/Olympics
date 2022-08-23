@@ -13,9 +13,9 @@ select
 	edition_id,
 	
 	case
-		when cast(year as varchar) like '%' then to_date(cast(year as text), 'YYYY') 			-- finally, hab den cast auf date hinbekommen nach 153518 trys
+		when year < 1000 or year > 9999 then null 
 		else to_date(cast(year as text), 'YYYY')
-	end as year,
+	end as year_dt,
 	
 	case
 		when country = 'na' then null

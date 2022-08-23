@@ -40,8 +40,7 @@ select
  
 	case
 		when country = 'na' then null
-		when country = ' % ' then cast(trim(both from country) as varchar)
-		else country
+		else trim(country)
 	end as country,
 	
 	case

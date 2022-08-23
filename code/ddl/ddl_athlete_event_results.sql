@@ -40,10 +40,10 @@ select
 	
 	case
 		when pos = 'na' then null
-		when pos like '=%' then trim('=' from pos)											-- changed from pos = '=%' to current. fixed it.
-		when pos ~ '^[A-Z]'then null
-		when pos ~ '([ ])\w+' then regexp_replace(pos, '([ ])\w+', '', 'g')					-- Erster Versuch um Werte wie "63 r1/2" zu entfernen, funktioniert nicht aber gibt kein error aus
-		--when pos like '% %' then trim(trailing ' ______' from pos)						-- Zweiter Versuch, gleiches Outcome wie oben.
+		when pos like '=%' then trim('=' from pos)												-- changed from pos = '=%' to current. fixed it.
+		when pos ~ '^[A-Z]' then null
+		-- when pos ~ '(^[0-9])\w+' then 
+		-- when pos ~ '([ ])\w+' then regexp_replace(pos, '([ ])\w+', '', 'g')					-- Erster Versuch um Werte wie "63 r1/2" zu entfernen, funktioniert nicht aber gibt kein error aus
 		else pos
 	end as pos,
 	
