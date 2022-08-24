@@ -4,38 +4,36 @@
  * 	am häufigsten auf dem 4ten Platz gelandet
  * 
  */
-
-/*
-select				athlete_id, result_id, medal, pos
-from				olympics.athlete_event_results
-where				0 = any(
-						select	count(medal)
-						from	olympics.athlete_event_results
-						group by athlete_id
-);
-*/
-
-
-select distinct  
-			athlete_id, medal
+/* subquery gibt alle athlete_id welche eine medal gewonnen haben,
+ * auch duplikate. wenn athlete_id nicht in der subquery vorkommt,
+ * wird sie in der ersten ebene in der liste aufgeführt.
+ * aka alle athlete_id welche noch nie eine medal gewonnen haben
+ * 
+select
+			athlete_id, medal, pos
 from	
 			olympics.athlete_event_results
-where	
-			medal is null
-group by 	
-			athlete_id, medal
-;
-
-/*
-select 	athlete_id, count(medal)
-from	olympics.athlete_event_results
-group by athlete_id
+where 		athlete_id != all(
+								select 	athlete_id 
+								from 	olympics.athlete_event_results
+								where 	medal is not null 
+								)
 ;
 */
 
-select				athlete_id, result_id, medal, pos
-from				olympics.athlete_event_results
-where				athlete_id = 44959
-group by 			athlete_id, result_id, medal, pos
-;
+select
+			athlete_id, medal, pos, count(athlete_id) as "Anzahl 4ter Platz"
+from	
+			olympics.athlete_event_results
+where 		athlete_id != all(
+								select 	athlete_id 
+								from 	olympics.athlete_event_results
+								where 	medal is not null 
+								)
+and			pos = '4'
+group by	athlete_id, medal, pos
+order by	"Anzahl 4ter Platz" desc
+limit 5
 
+;	
+							
