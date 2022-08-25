@@ -6,7 +6,7 @@
  */
 
 -- First valid Output, aber uneffizient. I wonder how, I wonder why ~~~
-
+/*
 select
 			athlete_id, count(athlete_id) as "Anzahl 4ter Platz"
 from	
@@ -21,9 +21,12 @@ and			pos = '4'
 group by	athlete_id
 order by	"Anzahl 4ter Platz" desc
 ;	
+*/
 
+drop view if exists view_issue6;
 
 -- Verbesserung der Effizienz bei gleichem Output.
+create view view_issue6 as
 with subquery as (
 								select  distinct
 										athlete_id
@@ -44,6 +47,10 @@ group by 		athlete_id
 
 order by 		"Wie oft vierter Platz" desc
 ;
+
+
+select * from view_issue6;
+
 
 /* Wieso kriegt der hier Bronze wenn er aufm 4ten Platz steht??
 select athlete_id, pos, medal
