@@ -1,4 +1,4 @@
---create view ungluecklichste_Athleten as
+
 
 select	r.result_id, r.edition, r.sport, r.start_date, r.end_date  , max(end_date - start_date) as Anzahl_Tage
 from	olympics.results r 
